@@ -1,0 +1,26 @@
+-----------------------merge------------------------------
+main:    A --- B --- C --- M
+                       \  / 
+feature:                D --- E --- F
+
+-----------------------cherry-pick------------------------
+main:    A --- B --- C --- E'
+feature:          \--- D --- E --- F
+
+-----------------------rebase------------------------
+main:    A --- B --- C
+feature:          \--- D --- E --- F
+
+=> main:    A --- B --- C --- D' --- E' --- F'
+
+Nguyên nhân 1: Parent commit thay đổi
+Khi thực hiện rebase, Git sẽ tái tạo các commit từ nhánh hiện tại dựa trên một base (commit cha) mới. 
+Điều này dẫn đến thay đổi trong mối quan hệ giữa các commit và do đó hash của commit cũng thay đổi.
+
+Nguyên nhân 2: Metadata thay đổi
+Khi Git tái tạo commit, metadata như thời gian tạo commit sẽ được cập nhật lại. Điều này cũng ảnh hưởng đến hash, 
+vì hash là một giá trị được tính toán từ tất cả dữ liệu của commit, bao gồm metadata.
+
+Nguyên nhân 3: Thay đổi nội dung trong commit
+Trong quá trình rebase, nếu bạn phải giải quyết xung đột hoặc chỉnh sửa nội dung của một commit, 
+điều này sẽ làm thay đổi nội dung của commit. Kết quả là hash cũng thay đổi.
