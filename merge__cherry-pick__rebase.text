@@ -24,3 +24,8 @@ vì hash là một giá trị được tính toán từ tất cả dữ liệu c
 Nguyên nhân 3: Thay đổi nội dung trong commit
 Trong quá trình rebase, nếu bạn phải giải quyết xung đột hoặc chỉnh sửa nội dung của một commit, 
 điều này sẽ làm thay đổi nội dung của commit. Kết quả là hash cũng thay đổi.
+
+Hash trong Git là một chuỗi ký tự duy nhất (thường là một mã SHA-1) được sử dụng để xác định một commit. Hash này được tính toán dựa trên nội dung của commit, bao gồm:
+Nội dung của commit: Các thay đổi trong file.
+Thông tin metadata: Thời gian commit, tác giả, và thông tin khác.
+Thông tin về commit cha: Commit trước đó trong lịch sử.
